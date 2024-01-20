@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.String,
     required: true
   },
+  active:{
+    type: mongoose.Schema.Types.Boolean,
+    default:true
+  }
 });
 
 const userModel = mongoose.model("user", userSchema);
