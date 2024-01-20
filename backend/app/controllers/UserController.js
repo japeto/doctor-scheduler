@@ -1,4 +1,4 @@
-import { userModel } from "../models";
+import { userModel } from "../models/index.js";
 
 class UserController {
   // find all user in db
