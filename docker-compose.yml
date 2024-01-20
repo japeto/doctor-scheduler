@@ -1,0 +1,45 @@
+version: '3'
+services:
+  ds_database: # Servicio para la base de datos de Doctor Scheduler
+    image: mongo:6.0
+    restart: unless-stopped
+    env_file: ./database/.env
+    ports:
+      - "9010:27017" # Puerto por defecto MongoDB
+      # - $MONGO_LOCAL_PORT:$MONGO_DOCKER_PORT
+    volumes:
+      - db:./database/data    
+    networks:
+      - doctorscheduler
+  ds_backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ds_backend
+    env_file: ./backend/.env
+    depends_on:
+      - ds_database
+    expose:
+      - 9030
+    ports:
+      - "9030:9030"
+    networks:
+      - doctorscheduler
+  ds_frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ds_frontend
+    env_file: ./frontend/.env
+    depends_on:
+      - ds_backend
+    expose:
+      - 80
+    ports:
+      - "80:3000"
+    networks:
+      - doctorscheduler
+
+networks:
+  doctorscheduler:
+    driver: bridge
