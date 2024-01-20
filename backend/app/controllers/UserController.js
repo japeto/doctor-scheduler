@@ -5,8 +5,8 @@ class UserController {
   // recupere todos los usuarios
   static async all(req, res, next){
     try{
-      const documents = userModel.find();
-      res.status(200).json(documents)
+      const documents = await userModel.find({});
+      res.status(200).json({"data":documents})
     }catch(err){
       next(err);
     }

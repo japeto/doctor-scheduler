@@ -19,6 +19,7 @@ const app = express()
 // vinculo todas las rutas a express
 routes(app);
 
+
 app.listen(
   process.env.PORT,
   () => console.log(`Server alive in: 127.0.0.1:${process.env.PORT}`)
