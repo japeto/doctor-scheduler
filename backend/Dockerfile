@@ -8,7 +8,7 @@ COPY package-lock.json /usr/app/package-lock.json
 # Se instalan las dependias -- ci: clean-install
 RUN npm ci
 # Copie el codigo fuente
-COPY ./app /usr/app/
+COPY . /usr/app/
 # Abra el puerto 9030 del contenedor
 EXPOSE 9030
 ## Levantate! y anda!

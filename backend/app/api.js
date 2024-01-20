@@ -1,5 +1,4 @@
-import * as dotenv from 'dotenv'
-dotenv.config()
+import "dotenv/config";
 
 import express from "express";
 import conectar from "./config/database.js";
@@ -15,6 +14,7 @@ dconnection.on("open", ()=>{
 });
 
 const app = express()
+
 
 app.listen(
   process.env.PORT,
