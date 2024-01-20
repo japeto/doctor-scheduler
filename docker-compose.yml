@@ -8,7 +8,7 @@ services:
       - "9010:27017" # Puerto por defecto MongoDB
       # - $MONGO_LOCAL_PORT:$MONGO_DOCKER_PORT
     volumes:
-      - db:./database/data    
+      - ./database/data:/data/db
     networks:
       - doctorscheduler
   ds_backend:
