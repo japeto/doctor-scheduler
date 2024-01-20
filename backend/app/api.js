@@ -2,6 +2,8 @@ import "dotenv/config";
 
 import express from "express";
 import conectar from "./config/database.js";
+// obtengo las rutas de mi API
+import routes from "./routes/index.js"
 
 const dconnection = await conectar();
 
@@ -14,7 +16,8 @@ dconnection.on("open", ()=>{
 });
 
 const app = express()
-
+// vinculo todas las rutas a express
+routes(app);
 
 app.listen(
   process.env.PORT,
