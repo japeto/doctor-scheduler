@@ -18,6 +18,10 @@ const roleSchema = new mongoose.Schema({
     required: [
       true, "role name is required"
     ],
+  },
+  active:{
+    type: mongoose.Schema.Types.Boolean,
+    default:true
   }
 });
 

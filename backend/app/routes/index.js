@@ -1,9 +1,12 @@
 import express from "express";
-import uroutes from "./user.js"
-// import apporoutes from "./appointment.js"
+import roleRoutes from "./role.js"
+import userRoutes from "./user.js"
+import appoimentRoutes from "./appointment.js"
 
 const routes = app =>{
-  app.use(express.json(), uroutes, /* apporoutes */)
-}
+  app.use(express.json(), 
+    userRoutes, roleRoutes, appoimentRoutes
+  )
+};
 
 export default routes;
