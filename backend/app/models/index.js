@@ -1,4 +1,5 @@
+import { roleModel } from "./role.js"
 import { userModel } from "./user.js"
-// import { appointmentModel } from "./appointment.js"
+import { appoimentModel } from "./appointment.js"
 
-export { userModel, /*appointmentModel*/ };
+export { userModel, roleModel, appoimentModel };
