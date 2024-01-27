@@ -1,5 +1,5 @@
 # Utilice como imagen base node en su version 12
-FROM node:12-slim 
+FROM node:15-slim 
 # Carpeta en el contenedor - Donde reside la APP
 WORKDIR /usr/app
 # Copie el archivo de dependencias y paquetes
@@ -12,6 +12,6 @@ COPY . /usr/app/
 # Abra el puerto 9030 del contenedor
 EXPOSE 9030
 ## Levantate! y anda!
-CMD ["npm", "start"]
+CMD ["node", "app/api.js"]
 
 

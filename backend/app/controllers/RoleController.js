@@ -52,7 +52,7 @@ class RoleController {
     try{
       const uid = req.params.id;
       const data = req.body;
-      data.active = !req.body?.active
+      data.active = false; //!req.body?.active
       const a_document = await roleModel.findByIdAndUpdate(uid, data);
       if(a_document === null){
         res.status(404).json({"message": "Role not found"})
