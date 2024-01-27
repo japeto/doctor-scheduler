@@ -5,20 +5,10 @@ import conectar from "./config/database.js";
 // obtengo las rutas de mi API
 import routes from "./routes/index.js"
 
-const dconnection = await conectar();
-
-dconnection.on("error", function(err){
-  console.log(`Connection error,  ${err}`);
-});
-
-dconnection.on("open", ()=>{
-  console.log("Successful connection");
-});
-
+conectar(); // conexion a la DB
 const app = express()
 // vinculo todas las rutas a express
-routes(app);
-
+routes(app); // se incluyen las rutas
 
 app.listen(
   process.env.PORT,
