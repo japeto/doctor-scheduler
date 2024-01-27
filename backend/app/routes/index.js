@@ -1,7 +1,7 @@
 import express from "express";
 import roleRoutes from "./role.js"
 import userRoutes from "./user.js"
-import appoimentRoutes from "./appointment.js"
+import appoimentRoutes from "./appoiment.js"
 
 const routes = app =>{
   app.use(express.json(), 

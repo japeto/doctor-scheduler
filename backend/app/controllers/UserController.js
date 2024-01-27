@@ -43,11 +43,12 @@ class UserController {
     try{
       const uid = req.params.id;
       const data = req.body;
-      const a_document = userModel.findByIdAndUpdate(uid, data);
+      const a_document = await userModel.findByIdAndUpdate(uid, data);
       if(a_document === null){
         res.status(404).json({"message": "User not found"})
       }else{
-        res.status(201).json({"message": "Updated!", data: a_document})
+        const o_document = userModel.findById(uid);
+        res.status(201).json({"message": "Updated!", data: o_document})
       }
     }catch(err){
       next(err);
@@ -62,7 +63,7 @@ class UserController {
       // const a_document = userModel.findByIdAndUpdate(uid, data);
       
       // SI a la eliminacion persistente
-      const a_document = userModel.findByIdAndDelete(uid);
+      const a_document = await userModel.findByIdAndDelete(uid);
       
       if(a_document === null){
         res.status(404).json({"message": "User not found"})
