@@ -8,7 +8,7 @@ const roleSchema = new mongoose.Schema({
     ],
     validate: {
       validator: (a_name)=>{
-        return a_name.indexOf(" ") >=0;
+        return a_name.indexOf(" ") < 0;
       },
       message: "name contains white spaces"
     }
