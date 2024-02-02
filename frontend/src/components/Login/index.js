@@ -1,7 +1,6 @@
 import './style.css';
 
 import { authUser } from  '../../api'
-
 import { useState } from 'react';
 
 const Login = () =>{
