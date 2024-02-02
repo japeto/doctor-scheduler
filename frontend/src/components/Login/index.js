@@ -12,7 +12,10 @@ const Login = () =>{
 
   const onSubmit = function(event){
     const aForm = event.target;
-    let aUser = Object.assign({}, aForm)
+    let aUser = Object.assign({}, {
+        email:aForm.email.value, 
+        pass:aForm.pass.value
+    })
     authUser(aUser)
       .then(resp =>{
         console.log(`Success!!`, resp)
@@ -43,7 +46,7 @@ const Login = () =>{
             <h2 className='auth-form-title'>Doctor Scheduler</h2>
             <div className='form-group mt-3'>
               <input 
-                type="email" 
+                type="email" name='email' id='email'
                 onChange={onChageInput}
                 autoComplete='off'
                 className='form-control mt-1' 
@@ -51,7 +54,7 @@ const Login = () =>{
             </div>
             <div className='form-group mt-3'>
               <input
-                type='password'
+                type='password' name='pass' id='pass'
                 onChange={onChageInput}
                 className='form-control mt-1'
                 placeholder='Contraseña'/>
