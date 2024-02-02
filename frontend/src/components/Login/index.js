@@ -1,6 +1,6 @@
 import './style.css';
 
-//import { authUser } from  '../../api'
+import { authUser } from  '../../api'
 
 import { useState } from 'react';
 
@@ -14,7 +14,14 @@ const Login = () =>{
   const onSubmit = function(event){
     const aForm = event.target;
     let aUser = Object.assign({}, aForm)
-    // authUser(aUser).then().cath()
+    authUser(aUser)
+      .then(resp =>{
+        console.log(`Success!!`, resp)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    // detener el evento de interfaz
     event.preventDefault();
   }
 
