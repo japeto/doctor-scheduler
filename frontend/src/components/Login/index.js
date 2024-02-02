@@ -14,7 +14,7 @@ const Login = () =>{
   const onSubmit = function(event){
     const aForm = event.target;
     let aUser = Object.assign({}, aForm)
-    // authUser(user).then().cath()
+    // authUser(aUser).then().cath()
     event.preventDefault();
   }
 
