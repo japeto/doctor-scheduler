@@ -16,7 +16,7 @@ class AuthController {
       jwt.verify(token, secretKey, (err, user) => {
         if (err) return res.status(403).json({ error: 'Token is not valid' });
         req.user = user;
-        res.status(201).json({"token": token, "name": user.name})
+        res.status(200).json({"token": token, "name": user.name})
       });
       
     }catch(err){
