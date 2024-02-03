@@ -35,8 +35,8 @@ jobs:
 
       - name: Container Tags
         run: |
-          docker tag ${{ secrets.DOCKER_USER }}/backend doctor-scheduler-backend:${{ github.sha }}
-          docker tag ${{ secrets.DOCKER_USER }}/backend doctor-scheduler-backend:latest
+          docker tag ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend doctor-scheduler-backend:${{ github.sha }}
+          docker tag ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend doctor-scheduler-backend:latest
       - name: Container Push
         run: |
           docker push ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend:${{ github.sha }}
