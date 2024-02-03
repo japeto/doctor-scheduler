@@ -4,9 +4,9 @@ FROM node:15-slim
 WORKDIR /usr/app
 # Copie el archivo de dependencias y paquetes
 COPY package.json /usr/app/package.json
-COPY package-lock.json /usr/app/package-lock.json
+# COPY package-lock.json /usr/app/package-lock.json
 # Se instalan las dependias -- ci: clean-install
-RUN npm ci
+RUN npm i
 # Copie el codigo fuente
 COPY . /usr/app/
 # Abra el puerto 9030 del contenedor
