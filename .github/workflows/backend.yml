@@ -11,12 +11,13 @@ on:
 jobs:
   ci-job:
     runs-on: ubuntu-latest
-    container:
-        image:node
     steps:
-      - uses: actions/checkout@v1
-      - name: Install dependencies
-        run: npm ci
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '15.x'
+      - run: npm ci
           # npm test  # not implement yet
 
   cd-job:
