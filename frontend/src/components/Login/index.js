@@ -29,7 +29,10 @@ const Login = () =>{
 
     authUser(aUser)
       .then(resp =>{
-        console.log(`Success!!`, resp)
+        console.log(`Success!!`, resp.data)
+        const { token, name } = resp.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", name);
       })
       .catch(err =>{
         console.log(err);
@@ -37,7 +40,8 @@ const Login = () =>{
           ...user,
           ['error']:true
         })
-        return
+        event.preventDefault();
+        return;
       })
     // detener el evento de interfaz
     event.preventDefault();

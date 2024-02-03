@@ -4,7 +4,7 @@ import express from "express";
 import conectar from "./config/database.js";
 // obtengo las rutas de mi API
 import routes from "./routes/index.js"
-const cors = required('cors');
+import cors from "cors"
 
 conectar(); // conexion a la DB
 const app = express()

@@ -8,15 +8,22 @@ const config ={
   headers:{
     'Accept':"*/*",
     'Access-Control-Allow-Origin':"*",
-    'Content-type': "application/json"
+    'Content-type': "application/json",
   }
 }
 
 /*** Auth */
 const authUser = (data) =>{
-  return axios.post(`${URL}/auth`, data, config);
+  return axios.post(`${URL}auth`, data, config);
+}
+
+const getAllUsers = ()=>{
+  config.headers["Authorization"] = localStorage.getItem('token');
+  return axios.get(`${URL}user`, config);
+
 }
 
 module.exports = {
-  authUser
+  authUser,
+  getAllUsers
 }
