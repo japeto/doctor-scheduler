@@ -35,7 +35,6 @@ jobs:
         run: |
           docker tag backend ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend:${{ github.sha }}
           docker tag backend ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend:latest
-      
       - name: Container Push
         run: |
           docker push ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend:${{ github.sha }}
