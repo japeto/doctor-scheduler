@@ -1,4 +1,4 @@
-# Utilice como imagen base node en su version 12
+# Utilice como imagen base node en su version 15
 FROM node:15-slim 
 # Carpeta en el contenedor - Donde reside la APP
 WORKDIR /usr/app

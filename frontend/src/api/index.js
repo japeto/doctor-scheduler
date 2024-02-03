@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // TODO: se debe obtener desde el archivo env
-const URL = 'http://localhost:9030/'
+const URL = 'http://ds_backend:9030/'
 
 const config ={
   mode: 'no-cors',

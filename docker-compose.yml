@@ -32,8 +32,8 @@ services:
       dockerfile: Dockerfile
     container_name: ds_frontend
     env_file: ./frontend/.env
-    depends_on:
-      - ds_backend
+    # depends_on:
+    #   - ds_backend
     expose:
       - 80
     ports:
