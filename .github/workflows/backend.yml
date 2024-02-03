@@ -29,7 +29,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
 
       - name: Docker build backend
-        run: docker build -t ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend
+        run: docker build -t ${{ secrets.DOCKER_USER }}/doctor-scheduler-backend .
 
       - name: Container Tags
         run: |
