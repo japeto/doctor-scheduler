@@ -7,7 +7,9 @@ const Login = () =>{
 
   const [user, setUser] = useState({
     email:"",
-    pass:""
+    pass:"",
+    empty:false,
+    error:false
   });
 
   const onSubmit = function(event){
@@ -16,12 +18,26 @@ const Login = () =>{
         email:aForm.email.value, 
         pass:aForm.pass.value
     })
+    if(!aUser.email || !aUser.pass){
+      setUser({
+        ...user,
+        ["empty"]: true
+      })
+      event.preventDefault();
+      return;
+    }
+
     authUser(aUser)
       .then(resp =>{
         console.log(`Success!!`, resp)
       })
       .catch(err =>{
-        console.log(err)
+        console.log(err);
+        setUser({
+          ...user,
+          ['error']:true
+        })
+        return
       })
     // detener el evento de interfaz
     event.preventDefault();
@@ -44,6 +60,12 @@ const Login = () =>{
         <div  className='auth-form'>
           <div className='auth-form-content'>
             <h2 className='auth-form-title'>Doctor Scheduler</h2>
+            {user.empty && (
+              <span className='text-warning'>Digite las credenciales de usuario.</span>
+            )}
+            {user.error && (
+              <span className='text-error' >Hay un error de acceso!</span>
+            )}
             <div className='form-group mt-3'>
               <input 
                 type="email" name='email' id='email'
