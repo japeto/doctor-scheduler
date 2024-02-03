@@ -1,0 +1,45 @@
+name: frontend CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '15.x'
+      - run: 
+          npm i
+          npm run test
+          npm run build
+
+  cd-job:
+    runs-on: ubuntu-latest
+    needs: ci-job
+    steps:
+      - uses: actions/checkout@v1
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+
+      - name: Docker build frontend
+        run: |
+          cd frontend
+          docker build . -t ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend
+
+      - name: Container Tags
+        run: |
+          docker tag ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend:${{ github.sha }}
+          docker tag ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend:latest
+      - name: Container Push
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USER }}/doctor-scheduler-frontend:latest
